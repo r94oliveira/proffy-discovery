@@ -1,0 +1,62 @@
+
+.select-block label,
+.input-block label,
+.textarea-block label  {
+    font-size: 1.4rem;
+    color: var(--color-text-complement);
+}
+
+.input-block input,
+.select-block select,
+.textarea-block textarea {
+    width:100%;
+    height: 5.6rem;
+    margin-top: 0.8rem;
+    border-radius: 0.8rem;
+    background: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0; /*É uma cor bem forte que fica ao selecionar a caixa*/
+    padding: 0 1.6rem;
+    font: 1.6rem Archivo;
+}
+
+.textarea-block textarea {
+    padding: 1.2rem 1.6rem;
+    height: 16rem;
+
+    resize: vertical;
+
+}
+
+.input-block,
+.textarea-block {
+    position: relative;
+    /*Assim, os elementos dentro dele poderão ficar absoluto em relação à ele*/
+}
+
+/*
+:focus-within é quando dá foco a algo a partir do click por ex
+::after é depois de ser feito o foco >> É um pseudoelemento. O HTML vai criar um elemento ali só quando o elemento estiver em foco
+*/
+
+.input-block:focus-within::after,
+.textarea-block:focus-within::after  {
+    content: "";
+
+    /*O css calcula e remove 3.2rem do 100% do role*/
+    width: calc(100% - 3.2rem); 
+    height: 2px;
+    background: var(--color-primary-light);
+
+    /*Aqui ele fica absoluto, mas dentro do input-block que é relativo. Se não tivesse o relative, ele seria absoluto em relação à pagina toda e não só ao elemento*/
+    position: absolute;
+    left: 1.6rem;
+    bottom: 0px;
+    
+}
+
+label small {
+    font-size: 1.2rem;
+    padding-left: 1.2rem;
+    color: var(--color-small-info);
+}
